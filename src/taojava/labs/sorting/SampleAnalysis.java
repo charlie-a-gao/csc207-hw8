@@ -17,15 +17,18 @@ public class SampleAnalysis
     @SuppressWarnings("unchecked")
     Sorter<Integer>[] sorters =
         (Sorter<Integer>[]) new Sorter[] { new BuiltinSorter<Integer>(),
-                                          new InsertionSorter<Integer>() };
-    String[] sorterNames = { "Built-in", "InsertionA" };
+                                          new InsertionSorter<Integer>(), 
+                                          new NewQuicksorter<Integer>()};
+    String[] sorterNames = { "Built-in", "InsertionA","QuickSort" };
 
     @SuppressWarnings("unchecked")
     ArrayBuilder<Integer>[] builders =
         (ArrayBuilder<Integer>[]) new ArrayBuilder[] {
                                                       SorterAnalyzer.randomIntArrBuilder,
-                                                      SorterAnalyzer.increasingIntArrBuilder };
-    String[] builderNames = { "Random", "Increasing" };
+                                                      SorterAnalyzer.increasingIntArrBuilder,
+                                                      SorterAnalyzer.mostlyInOrderBuilder,
+                                                      SorterAnalyzer.reverseOrderBuilder};
+    String[] builderNames = { "Random", "Increasing","Mostly in Order","Reverse Order" };
 
     SorterAnalyzer.combinedAnalysis(pen, sorters, sorterNames,
                                     SorterAnalyzer.standardIntComparator,

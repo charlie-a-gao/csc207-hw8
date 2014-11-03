@@ -134,7 +134,29 @@ class Utils
                               T[] a2, int lb2, int ub2, T[] merged, int lbm,
                               int ubm)
   {
-    // STUB
+    int iteratorA1 = lb1;
+    int iteratorA2 = lb2;
+    for(int i = lbm; i <= ubm; i++)
+      {
+        if(order.compare(a1[iteratorA1],a2[iteratorA2]) < 0)
+          {
+            merged[i] = a1[iteratorA1];
+            iteratorA1++;
+          }// if a1 is smaller, add to merged and increase iterator
+        else if (order.compare(a1[iteratorA1],a2[iteratorA2]) > 0)
+          {
+            merged[i] = a2[iteratorA2];
+            iteratorA2++;
+          }//else if
+        else
+          {
+            merged[i] = a1[iteratorA1];
+            merged[i+1] = a2[iteratorA2];
+            i++;
+            iteratorA1++;
+            iteratorA2++;
+          }//else
+      }//merges
     return merged;
   } // merge(Comparator<T>, T[], int, int, T[], int, int)
 

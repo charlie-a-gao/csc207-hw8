@@ -49,7 +49,7 @@ public class NewQuicksorter<T>
   {
     return vals[lb];
   } // selectPivot(T[], Comparator<T>, int, int)
-  
+
   /**
    * Reorganize the elements in positions [lb..ub) of vals such that
    * elements smaller than the pivot appear to the left, elements
@@ -84,9 +84,65 @@ public class NewQuicksorter<T>
    *    For all i, lb <= i < mid, order.compare(values[i],pivot) <= 0
    *    For all i, mid < i < ub, order.compare(pivot, values[i]) < 0
    */
+
   int[] partition(T pivot, T[] vals, Comparator<T> order, int lb, int ub)
   {
-    // STUB
-    return new int[] { lb,ub };
+    int length = ub - lb;
+    int lessThan = lb;
+    int greaterThan = ub - 1;
+    int comparison = 0;
+    int origUb = ub;
+    T tmp = null;
+    //print(vals, lb, origUb,lessThan,greaterThan);
+    for (int i = lb; i < ub; i++)
+      {
+        comparison = order.compare(vals[i], pivot);
+        if (comparison > 0 && i <= greaterThan)
+          {
+            tmp = vals[i];
+            vals[i] = vals[greaterThan];
+            vals[greaterThan--] = tmp;
+            i--; //check the swapped value. 
+            ub--; //decrease the length of loop
+          }//if values[i] is greater than val
+
+        if (comparison < 0)
+          {
+            tmp = vals[i];
+            vals[i] = vals[lessThan];
+            vals[lessThan++] = tmp;
+          }
+        if (comparison == 0)
+          {
+            tmp = vals[i];
+            vals[i] = vals[lessThan];
+            vals[lessThan] = tmp;
+          }//if
+        //Utils.swap(vals, i, lessThan);
+
+        //print(vals, lb, origUb,lessThan,greaterThan);
+
+      }//for
+    return new int[] { lessThan, greaterThan + 1 };
   } // partition
+  /*
+  public static <T> void print(T[] values, int lb, int ub,int lessThan, int greaterThan)
+  {
+
+    System.out.print("[");
+    for (int i = lb; i < ub; i++)
+      {
+        if (i != lb)
+          System.out.print(",");
+        if (i == lessThan)
+          System.out.print("|"); //print lower bound
+        System.out.print(values[i]);
+        if (i == greaterThan)
+          System.out.print("|"); //print upper bound
+      }//for length
+    System.out.print("]");
+    System.out.println();
+  }//print
+  */
+
 } // NewQuicksorter<T>
