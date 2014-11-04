@@ -1,7 +1,6 @@
 package taojava.labs.sorting;
 
 import java.io.PrintWriter;
-
 import java.util.Comparator;
 import java.util.Random;
 
@@ -25,7 +24,7 @@ public class SorterAnalyzer
   /**
    * The smallest array size we use.
    */
-  static final int SMALLEST = 1024;
+  static final int SMALLEST = 32;
 
   /**
    * The largest array size we use.
@@ -83,15 +82,15 @@ public class SorterAnalyzer
             vals[i] = i;
         }//for
 
-      return vals;
-    };//mostlyInOrderBuilder
+    return vals;
+  };//mostlyInOrderBuilder
 
   public static final ArrayBuilder<Integer> reverseOrderBuilder = (length) ->
     {
       Integer[] vals = new Integer[length];
       Random random = new Random();
       for (int i = 0; i < length; i++)
-          vals[i]=length-i;
+        vals[i] = length - i;
 
       return vals;
     };//reverseOrderBuilder
@@ -159,6 +158,7 @@ public class SorterAnalyzer
   /**
    * Repeatedly perform basic analysis and gather statistics
    * (e.g., minimum time, maximum time, average time.
+   * -1 signifies an unsuccessful sort. 
    */
   public static <T> long[] compoundAnalysis(Sorter<T> sorter,
                                             Comparator<T> order,
@@ -172,6 +172,10 @@ public class SorterAnalyzer
     for (int i = 0; i < repetitions; i++)
       {
         current = basicAnalysis(sorter, order, builder, size);
+        if (current == Long.MAX_VALUE)
+          //if current is MAX_VALUE then the sort was unsuccessful
+          return new long[] { -1, -1, -1 }; 
+
         average += current;
         if (current > max)
           max = current;
@@ -217,7 +221,7 @@ public class SorterAnalyzer
                 long[] stats =
                     compoundAnalysis(sorters[i], order, builders[b], size,
                                      REPETITIONS);
-                
+
                 pen.printf("%-16s%-16s%12d    %12d%16d%16d\n", sorterNames[i],
                            builderNames[b], size, stats[2], stats[0], stats[1]);
               }// for sorters.length 

@@ -6,7 +6,7 @@ import java.io.PrintWriter;
  * A very simple analysis of a few sorting algorithms.
  * 
  * @author Samuel A. Rebelsky
- * @author Your Name Here
+ * @author Nicolas Knoebber
  */
 public class SampleAnalysis
 {
@@ -18,8 +18,9 @@ public class SampleAnalysis
     Sorter<Integer>[] sorters =
         (Sorter<Integer>[]) new Sorter[] { new BuiltinSorter<Integer>(),
                                           new InsertionSorter<Integer>(), 
-                                          new NewQuicksorter<Integer>()};
-    String[] sorterNames = { "Built-in", "InsertionA","QuickSort" };
+                                          new NewQuicksorter<Integer>(),
+                                          new MiddleQuicksort<Integer>()};
+    String[] sorterNames = { "Built-in", "InsertionA","QuickSort", "QuickSortB" };
 
     @SuppressWarnings("unchecked")
     ArrayBuilder<Integer>[] builders =
