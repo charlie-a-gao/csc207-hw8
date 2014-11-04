@@ -28,6 +28,7 @@ public class NewQuicksorter<T>
    */
   public void qsort(T[] vals, Comparator<T> order, int lb, int ub)
   {
+    //System.err.println("qsort(" + Arrays.toString(vals) + ", " + lb + "," + ub);
     // One element arrays are sorted.
     if (lb >= ub - 1)
       {
@@ -37,6 +38,8 @@ public class NewQuicksorter<T>
       {
         T pivot = selectPivot(vals, order, lb, ub);
         int[] bounds = partition(pivot, vals, order, lb, ub);
+        //System.err.println("After partitioning with " + pivot + ", bounds: " + Arrays.toString(bounds));
+        //System.err.println(Arrays.toString(vals));
         qsort(vals, order, lb, bounds[0]);
         qsort(vals, order, bounds[1], ub);
       } // More than one element

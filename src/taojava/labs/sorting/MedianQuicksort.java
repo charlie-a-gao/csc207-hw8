@@ -23,9 +23,9 @@ public class MedianQuicksort<T>
   {
     Random rand = new Random();
     
-    T p1 = vals[rand.nextInt((ub - lb)  + lb)];
-    T p2 = vals[rand.nextInt((ub - lb)  + lb)];
-    T p3 = vals[rand.nextInt((ub - lb) + lb)];
+    T p1 = vals[rand.nextInt(ub - lb) + lb];
+    T p2 = vals[rand.nextInt(ub - lb) + lb];
+    T p3 = vals[rand.nextInt(ub - lb) + lb];
     
     if(order.compare(p1, p2)>0)
       {

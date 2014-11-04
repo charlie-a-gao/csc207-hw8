@@ -14,7 +14,9 @@ public class RandomQuicksort<T> extends NewQuicksorter<T>
   public T selectPivot(T[] vals, Comparator<T> order, int lb, int ub)
   {
     Random rand = new Random();
-    T p1 = vals[rand.nextInt((ub - lb)  + lb)];
+    int index = rand.nextInt(ub - lb) + lb;
+    //System.err.println("selectPivot(" + lb + ", " + ub + ") -> " + index);
+    T p1 = vals[index];
     return p1;
   }
 }
