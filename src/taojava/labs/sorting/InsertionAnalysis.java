@@ -4,6 +4,13 @@ import java.io.PrintWriter;
 
 public class InsertionAnalysis
 {
+  /**
+   * Tests the different methods of insertion.
+   * 
+   * For all cases and arrays, internal swap appears to be the fastest, 
+   * followed by shift, and then external swap, which is almost twice as slow 
+   * as internal swap.
+   */
   public static void main(String[] args)
   {
     PrintWriter pen = new PrintWriter(System.out, true);

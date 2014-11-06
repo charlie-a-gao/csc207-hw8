@@ -28,7 +28,7 @@ public class InsertionSorterC<T>
   /**
    * Insert the value in position i into the sorted subarray in positions
    * 0..(n-1).
-   * 
+   * Swaps until in right position.
    * @param values
    *   the array into which we are inserting values.
    * @param order
@@ -44,7 +44,6 @@ public class InsertionSorterC<T>
    */
   void insert(T[] vals, Comparator<T> order, int n)
   {
-
     int i = n;
     while ((i > 0) && (order.compare(vals[i - 1], vals[i]) > 0))
       {

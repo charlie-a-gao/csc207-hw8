@@ -79,5 +79,4 @@ public class InsertionSorter<T>
     // the boundary is in the right position.
   } // insert(T[], Comparator<T>, int)
 
-
 } // InsertionSorter<T>

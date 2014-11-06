@@ -28,7 +28,7 @@ public class InsertionSorterB<T>
   /**
    * Insert the value in position i into the sorted subarray in positions
    * 0..(n-1).
-   * 
+   * Insert method: shift 
    * @param values
    *   the array into which we are inserting values.
    * @param order
@@ -57,15 +57,14 @@ public class InsertionSorterB<T>
     int i = n;
     while ((i > 0) && order.compare(vals[i - 1], temp) > 0)
       {
-        vals[i] = vals[i - 1];
+        vals[i] = vals[i - 1]; //set the current to the previous value. 
         i--;
       } // while
 
     vals[i] = temp;
 
-    // At this point, either i is 0, in which case I2 tells us that
-    // that the elements in position 1..n are sorted and I3 tells us
-    // that the element in position 0 is smaller than all of those, or
+    // We move down the list until we find the position that should be replaced
+    //Which shows that I1 holds
     // i is positive, in which case we know that the left part is
     // sorted (I1), the right part is sorted (I2), and the element at
     // the boundary is in the right position.
