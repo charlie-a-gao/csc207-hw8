@@ -38,9 +38,9 @@ public class IterativeMergeSorter<T>
                     for (int i = pointer; i < vals.length; i++)
                       {
                         vals[i] = output[i - pointer];
-                      }
-                  }
-              }
+                      }//for
+                  }//if
+              }//if
             else
               {
                 T[] output =
@@ -51,10 +51,10 @@ public class IterativeMergeSorter<T>
                 for (int i = 0; i < size * 2; i++)
                   {
                     vals[pointer + i] = output[i];
-                  }
-              }
+                  }//for
+              }//else
             pointer += size * 2;
-          }
+          }//while
 
         size *= 2;
       } // while

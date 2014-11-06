@@ -138,12 +138,12 @@ class Utils
     int iteratorA2 = lb2;
     for(int i = lbm; i < ubm; i++)
       {
-        if(iteratorA1 == a1.length)
+        if(iteratorA1 == ub1)
           {
             merged[i] = a2[iteratorA2];
             iteratorA2++;
           }
-        else if (iteratorA2 == a2.length)
+        else if (iteratorA2 == ub2)
           {
             merged[i] = a1[iteratorA1];
             iteratorA1++;
@@ -161,7 +161,7 @@ class Utils
         else
           {
             merged[i] = a1[iteratorA1];
-            merged[i+1] = a2[iteratorA2];
+            merged[i+1]=a2[iteratorA2];
             i++;
             iteratorA1++;
             iteratorA2++;
