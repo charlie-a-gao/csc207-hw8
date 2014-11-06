@@ -29,7 +29,7 @@ public class SorterAnalyzer
   /**
    * The largest array size we use.
    */
-  static final int LARGEST = 16384;
+  static final int LARGEST = 32768;
 
   /**
    * The amount we scale the array size between tests.
@@ -88,7 +88,6 @@ public class SorterAnalyzer
   public static final ArrayBuilder<Integer> reverseOrderBuilder = (length) ->
     {
       Integer[] vals = new Integer[length];
-      Random random = new Random();
       for (int i = 0; i < length; i++)
         vals[i] = length - i;
 

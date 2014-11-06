@@ -8,12 +8,13 @@ import java.util.Random;
  *
  * A quicksort that chooses the pivot randomly.
  */
+
 public class RandomQuicksort<T> extends NewQuicksorter<T>
 {
+  Random rand = new Random();
   @Override
   public T selectPivot(T[] vals, Comparator<T> order, int lb, int ub)
   {
-    Random rand = new Random();
     int index = rand.nextInt(ub - lb) + lb;
     //System.err.println("selectPivot(" + lb + ", " + ub + ") -> " + index);
     T p1 = vals[index];

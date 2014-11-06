@@ -11,10 +11,15 @@ import java.io.PrintWriter;
 public class QuickSortAnalysis
 {
   /**
-   * An analysis of the affect that choosing pivot points has.
-   * From this implementation of QuickSort, choosing the middle is always the best choice. 
-   * Both of the random ways of choosing the pivot points result in stack overflows on even moderately sized array
-   * Choosing the lower bound as the pivot is the slowest usually, though it takes a larger sized array to overflow it.
+   * A 'quick' analysis of the affect that choosing pivot points has:
+   * From this implementation of QuickSort, choosing the middle is almost always the best choice.
+   * Choosing the lower bound is almost always the slowest by far, 
+   * the only exceptions are some randomly generated lists.
+   * Choosing the median of 3 randomly generated points seems to be almost the same as random, 
+   * though it performs slightly better in a reverse order list
+   * Both of these are slightly slower on average then choosing the middle.
+   * Sorting an array in reverse order and having the pivot be the lower bound is extremely slow, and will overflow
+   * the stack. 
    * 
    */
   public static void main(String[] args)
