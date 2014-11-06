@@ -22,7 +22,14 @@ public class MergeSorterB<T>
    Merge back into values
    
    */
-  public T[] sort(T[] vals, int lb, int ub, T[] scratch,Comparator<T> order)
+  public T[] sort(T[] vals, Comparator<T> order)
+  {
+    @SuppressWarnings("unchecked")
+    T[] scratch = (T[]) new Object[vals.length];
+    return sort(vals, 0, vals.length, scratch, order);
+  }
+   
+  public T[] sort(T[] vals, int lb, int ub, T[] scratch, Comparator<T> order)
   {
     // Base case: Singleton arrays need not be sorted.
     if (vals.length <= 1)
@@ -31,9 +38,9 @@ public class MergeSorterB<T>
       } // if length <= 1
     else
       {
-        int mid = vals.length / 2;
-        T[] left = sort(Arrays.copyOfRange(vals, 0, mid), order);
-        T[] right = sort(Arrays.copyOfRange(vals, mid, vals.length), order);
+        int mid = (ub - lb)/2;                     
+        T[] left = sort(vals,lb,mid,scratch,order);
+        T[] right = sort(vals,mid,ub,scratch,order);
         return Utils.merge(order, left, right);
       } // recursive case: More than one element
   } // sort(T[], Comparator<T>)

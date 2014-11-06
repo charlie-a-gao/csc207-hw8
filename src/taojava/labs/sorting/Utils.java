@@ -136,9 +136,19 @@ class Utils
   {
     int iteratorA1 = lb1;
     int iteratorA2 = lb2;
-    for(int i = lbm; i <= ubm; i++)
+    for(int i = lbm; i < ubm; i++)
       {
-        if(order.compare(a1[iteratorA1],a2[iteratorA2]) < 0)
+        if(iteratorA1 == a1.length)
+          {
+            merged[i] = a2[iteratorA2];
+            iteratorA2++;
+          }
+        else if (iteratorA2 == a2.length)
+          {
+            merged[i] = a1[iteratorA1];
+            iteratorA1++;
+          }
+        else if(order.compare(a1[iteratorA1],a2[iteratorA2]) < 0)
           {
             merged[i] = a1[iteratorA1];
             iteratorA1++;
