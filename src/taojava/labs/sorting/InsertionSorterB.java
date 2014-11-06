@@ -53,6 +53,7 @@ public class InsertionSorterB<T>
     //   I1(n) holds at the because it's a precondition.
     //   I2(n) holds at the beginning because that subarray is empty
     //   I3(n) holds at the beginning because the second subarray is empty
+    //   Note during this, it is not longer a permutation until it is done. 
     T temp = vals[n];
     int i = n;
     while ((i > 0) && order.compare(vals[i - 1], temp) > 0)
@@ -63,8 +64,9 @@ public class InsertionSorterB<T>
 
     vals[i] = temp;
 
-    // We move down the list until we find the position that should be replaced
-    //Which shows that I1 holds
+    // We move down the list until we find the position that should be replaced,
+    // while moving everything else over.
+    //I1 will still hold, because all we have done is shift over
     // i is positive, in which case we know that the left part is
     // sorted (I1), the right part is sorted (I2), and the element at
     // the boundary is in the right position.

@@ -49,4 +49,4 @@ public class QuickSortAnalysis
                                     builders, builderNames);
 
   } // main(String[]
-} // SampleAnalysis
+} // QuickSortAnalysis

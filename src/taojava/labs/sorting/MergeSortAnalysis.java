@@ -2,24 +2,24 @@ package taojava.labs.sorting;
 
 import java.io.PrintWriter;
 
-public class InsertionAnalysis
+public class MergeSortAnalysis
 {
   /**
-   * Tests the different methods of insertion.
-   * 
-   * For all cases and arrays, shifting appears to be the fastest method of insertion. 
-   * followed by doing a series of internal swaps, which seems to take about 3 times as long on reverse ordered arrays.
-   * External swap is a tiny bit slower than internal swap, but it doesn't make that big of a difference. 
+   * Tests the different methods merge sorting
+   * It seems like using a scratch array is not that much more efficient then a standard recursive sort,
+   * though in some cases it does perform marginally better (usually 1 ms)
+   * Iterative sort appears to be a bit slower then both of them, and suffers the worse losses
+   * in reverse order lists, where the others do it twice as fast on large arrays. 
    */
   public static void main(String[] args)
   {
     PrintWriter pen = new PrintWriter(System.out, true);
     @SuppressWarnings("unchecked")
     Sorter<Integer>[] sorters =
-        (Sorter<Integer>[]) new Sorter[] { new InsertionSorter<Integer>(),
-                                          new InsertionSorterB<Integer>(),
-                                          new InsertionSorterC<Integer>()};
-    String[] sorterNames = { "internal swap", "shift", "external swap" };
+        (Sorter<Integer>[]) new Sorter[] { new MergeSorter<Integer>(),
+                                          new MergeSorterB<Integer>(),
+                                          new IterativeMergeSorter<Integer>()};
+    String[] sorterNames = { "Standard", "Scratch Array", "Iterative" };
 
     @SuppressWarnings("unchecked")
     ArrayBuilder<Integer>[] builders =
@@ -35,4 +35,4 @@ public class InsertionAnalysis
                                     SorterAnalyzer.standardIntComparator,
                                     builders, builderNames);
   } // main(String[]
-}//InsertionAnalysis
+}//MergeSortAnalysis
