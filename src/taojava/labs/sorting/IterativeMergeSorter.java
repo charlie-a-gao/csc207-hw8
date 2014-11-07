@@ -27,7 +27,7 @@ public class IterativeMergeSorter<T>
         while (pointer < vals.length)
           {
             if (pointer + size * 2 > vals.length)
-              {
+              { //for odd cases, merge into a larger array (3 for size 2)
                 if (pointer + size < vals.length)
                   {
                     T[] output =
@@ -48,14 +48,15 @@ public class IterativeMergeSorter<T>
                                                           pointer + size),
                                 Arrays.copyOfRange(vals, pointer + size,
                                                    pointer + size * 2));
+                    //normal merge with 2 equal sized arrays
                 for (int i = 0; i < size * 2; i++)
-                  {
+                  {//put results of merge into output
                     vals[pointer + i] = output[i];
                   }//for
               }//else
             pointer += size * 2;
           }//while
-
+        //set size to x2 and iterate again!
         size *= 2;
       } // while
     return vals;
